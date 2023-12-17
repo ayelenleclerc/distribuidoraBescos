@@ -50,14 +50,22 @@ const ticketResponse = async () => {
                    `;
   }
   finish.addEventListener("click", async () => {
-    const deleteCart = await fetch(`/api/carts/${idCart}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    Swal.fire({
+      icon: "success",
+      title: "Gracias por tu compra!",
+      text: "Se envió un correo con los detalles de su compra.",
+      confirmButtonText: "Ok",
+    }).then(async () => {
+      const deleteCart = await fetch(`/api/carts/${idCart}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-    ticket.innerHTML = "";
+      ticket.innerHTML = "";
+      window.location.href = "/products";
+    });
   });
 };
 
