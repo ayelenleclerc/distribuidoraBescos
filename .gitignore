@@ -2,3 +2,5 @@
 /.vscode/
 .env
 dockerfile
+/test
+.dockerignore
