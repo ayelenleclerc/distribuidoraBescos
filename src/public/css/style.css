@@ -68,7 +68,7 @@
   width: 100%;
 }
 
-.btnContainer {
+.btnContainerSocial {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -114,15 +114,6 @@
   padding: 5px;
 }
 
-.social-container {
-  width: 90%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-content: center;
-  justify-content: center;
-  align-items: center;
-}
 .profile {
   display: flex;
   flex-direction: column;
@@ -214,9 +205,9 @@
 }
 
 .btnContainer {
-  width: 100%;
+  width: 50%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   flex-wrap: nowrap;
   align-content: center;
   justify-content: space-evenly;
@@ -227,7 +218,6 @@
   width: 100%;
 }
 
-/* HTML: <div class="loader"></div> */
 .loader {
   width: 120px;
   height: 20px;
