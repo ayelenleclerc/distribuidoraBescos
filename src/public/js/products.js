@@ -12,6 +12,10 @@ async function addProduct(id) {
     });
     const result = await response.json();
   }
+  Toastify({
+    text: "Producto agregado al carrito",
+    duration: 3000,
+  }).showToast();
 }
 
 function getCookie(name) {

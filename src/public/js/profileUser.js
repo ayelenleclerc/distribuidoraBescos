@@ -99,18 +99,15 @@ async function productCreator() {
 }
 
 const updateUserPremiumStatus = async (uid) => {
-  console.log(uid);
   fetchCurrentUser();
   const premiumUser = await fetch(`/api/users/premium/${uid}`, {
     method: "PUT",
   })
     .then((res) => res.json())
     .then((data) => {
-      console.log(data);
       renderUserView(data.payload.role);
     });
 };
 
-// Cargar la vista del usuario actual al cargar la página
 fetchCurrentUser();
 renderUserView();
