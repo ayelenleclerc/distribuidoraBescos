@@ -84,7 +84,7 @@ const deleteUser = async (req, res, next) => {
 
 const upgradeUser = async (req, res, next) => {
   try {
-    const { id: uid } = req.user;
+    const { uid } = req.user.id;
     const user = await usersService.getUserBy({ _id: uid });
 
     if (!user) {
@@ -99,7 +99,7 @@ const upgradeUser = async (req, res, next) => {
         .send({ status: "error", message: "User already upgraded" });
     }
 
-    if (user.role === "user") {
+    if (user.role === "user" && user.isPremium === true) {
       const updatedUser = await usersService.updateUser(
         { _id: uid },
         { role: "premium" }

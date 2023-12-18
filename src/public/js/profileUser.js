@@ -7,11 +7,13 @@ if (logoutButton) {
 
 const renderUserView = (payload) => {
   let content;
-
   switch (payload.role) {
     case "user":
-      if (payload.documents < 5) {
+      if (payload.isPremium === false) {
         content = `
+          <h4 class="profileName">Hola ${payload.name}</h4>
+          <p class="profileEmail">Email: ${payload.email}</p>
+          <p class="profileRole">Rol: ${payload.role}</p>
           <p> ¿Deseas ser premium? Primero debe agregar la documentación!</p>
           <button class="btn btn-success" onclick="premium()">Agregar documentos</button>
         `;
@@ -64,6 +66,7 @@ const fetchCurrentUser = async () => {
 
     if (response.ok) {
       const result = await response.json();
+      console.log(result.payload);
       renderUserView(result.payload);
       return result.payload;
     }
@@ -97,21 +100,17 @@ async function productCreator() {
 
 const updateUserPremiumStatus = async (uid) => {
   console.log(uid);
-  try {
-    const response = await fetch(`/api/users/premium/${uid}`, {
-      method: "PUT",
-    }).then((response) => {
-      console.log(response);
+  fetchCurrentUser();
+  const premiumUser = await fetch(`/api/users/premium/${uid}`, {
+    method: "PUT",
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      console.log(data);
+      renderUserView(data.payload.role);
     });
-
-    if (response.status === 200) {
-      console.log("Usuario actualizado a premium");
-      fetchCurrentUser();
-    }
-  } catch (error) {
-    console.error(error);
-  }
 };
 
 // Cargar la vista del usuario actual al cargar la página
 fetchCurrentUser();
+renderUserView();

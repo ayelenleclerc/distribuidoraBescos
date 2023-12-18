@@ -20,11 +20,7 @@ class UsersRouter extends BaseRouter {
       ]),
       userController.uploadDocuments
     );
-    this.put(
-      "/premium/:uid",
-      ["USER", "PREMIUM", "ADMIN"],
-      userController.upgradeUser
-    );
+    this.put("/premium/:uid", ["USER"], userController.upgradeUser);
 
     this.delete("/:uid", ["ADMIN"], userController.deleteUser);
   }

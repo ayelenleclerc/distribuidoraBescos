@@ -52,7 +52,7 @@ premiumForm.addEventListener("submit", async (event) => {
         // Mensaje de éxito
         Swal.fire({
           title: "¡Felicitaciones!",
-          text: "Ahora eres Premium",
+          text: "Tu documentación ha sido guardada con exito, ¡Gracias!",
           icon: "success",
           confirmButtonText: "OK",
         });

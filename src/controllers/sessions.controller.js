@@ -65,6 +65,7 @@ const logout = async (req, res, next) => {
 
 const current = async (req, res, next) => {
   try {
+    console.log(req.user);
     return res.sendSuccessWithPayload(req.user);
   } catch (error) {
     req.logger.error(error);
